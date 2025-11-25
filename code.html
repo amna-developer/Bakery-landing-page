@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cozy Corner Bakery</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fef3c7; 
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <a href="#" class="text-3xl font-bold text-pink-700 tracking-tight">
+                <img src="./WhatsApp Image 2025-11-04 at 9.27.58 AM.jpeg" alt="" class="h-12 w-auto">
+            </a>
+            <!-- Auth Button -->
+            <button id="auth-button" onclick="openModal('login')" class="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                Login / Register
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content: Hero and Product Cards -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <section class="text-center mb-16 p-8 bg-pink-100 rounded-xl shadow-xl">
+            <h1 class="text-5xl font-extrabold text-pink-800 mb-4">
+                Freshly Baked Goodness Daily
+            </h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+                Discover our artisanal breads, delightful pastries, and custom celebration cakes. Every bite is a moment of joy.
+            </p>
+        </section>
+
+        <!-- Product Cards Grid -->
+        <section>
+            <h2 class="text-4xl font-bold text-gray-800 mb-8 text-center border-b-2 border-pink-300 pb-2">Our Delicious Offerings</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Artisan Sourdough -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                    <img src="data:image/jpeg;base64,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" onerror="this.src='https://placehold.co/600x400/fff3c7/6b21a8?text=Sourdough+Loaf'" alt="Artisan Sourdough" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Artisan Sourdough</h3>
+                        <p class="text-gray-600 mb-4">Slow-fermented bread with a perfect crust and airy crumb. Perfect for toast or sandwiches.</p>
+                        <span class="inline-block bg-pink-200 text-pink-800 text-sm font-bold px-3 py-1 rounded-full">€5.50</span>
+                        <button class="float-right bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">Order</button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Raspberry Croissant -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-B68HrwCIPxW6hzamXxTRt6EbBaQ-4v7O5A&s" onerror="this.src='https://placehold.co/600x400/fff3c7/6b21a8?text=Raspberry+Croissant'" alt="Raspberry Croissant" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Raspberry Croissant</h3>
+                        <p class="text-gray-600 mb-4">Flaky pastry filled with fresh raspberry jam and a hint of vanilla cream.</p>
+                        <span class="inline-block bg-pink-200 text-pink-800 text-sm font-bold px-3 py-1 rounded-full">€3.20</span>
+                        <button class="float-right bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">Order</button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Chocolate Cake Slice -->
+                <div class="bg-white rounded-xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_YGJk_2f91QuG6iHwqMjEj-GZtvKZFRaXA&s" onerror="this.src='https://placehold.co/600x400/fff3c7/6b21a8?text=Chocolate+Fudge+Cake'" alt="Chocolate Fudge Cake" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-2">Decadent Fudge Cake</h3>
+                        <p class="text-gray-600 mb-4">Rich, moist chocolate cake with a creamy dark chocolate ganache. Sold by the slice.</p>
+                        <span class="inline-block bg-pink-200 text-pink-800 text-sm font-bold px-3 py-1 rounded-full">€4.90</span>
+                        <button class="float-right bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">Order</button>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <!-- Welcome Notification (Fixed Position) -->
+    <div id="welcome-notification" 
+         class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-xl transition-all duration-700 
+                transform opacity-0 translate-y-full max-w-xs z-50">
+        <p class="font-semibold text-lg">Welcome!</p>
+        <p class="text-sm">Thank you for visiting Areeba's Cake gallery. We hope you find something sweet!</p>
+    </div>
+
+    <!-- Auth Modal (Hidden by default) -->
+    <div id="auth-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden justify-center items-center z-50 transition-opacity duration-300" onclick="if(event.target.id === 'auth-modal') closeModal()">
+        
+        <div class="bg-white rounded-2xl shadow-3xl w-full max-w-md p-6 m-4 relative transform scale-95 transition-transform duration-300">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <h3 id="modal-title" class="text-3xl font-bold text-gray-800 mb-6 text-center">Login</h3>
+
+            <form id="auth-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                
+                <!-- Email Input -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+                    <input type="email" id="email" required 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500 transition duration-150"
+                           placeholder="you@example.com">
+                </div>
+
+                <!-- Password Input -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <input type="password" id="password" required minlength="6"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500 transition duration-150"
+                           placeholder="********">
+                </div>
+
+                <!-- Confirm Password (Registration Only) -->
+                <div id="confirm-password-field" class="hidden">
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                    <input type="password" id="confirm-password" minlength="6"
+                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-pink-500 focus:border-pink-500 transition duration-150"
+                           placeholder="********">
+                </div>
+
+                <!-- Form Message/Error Display -->
+                <div id="form-message" class="text-center font-medium hidden"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submit-button"
+                        class="w-full bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300 transform hover:scale-[1.01] shadow-lg">
+                    Login
+                </button>
+            </form>
+
+            <!-- Switcher Link -->
+            <div class="mt-6 text-center text-sm">
+                <p id="switch-prompt">Don't have an account? 
+                    <button onclick="switchForm('register')" class="text-pink-600 hover:text-pink-800 font-medium transition-colors">
+                        Register
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        const modal = document.getElementById('auth-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const submitButton = document.getElementById('submit-button');
+        const switchPrompt = document.getElementById('switch-prompt');
+        const confirmPasswordField = document.getElementById('confirm-password-field');
+        const formMessage = document.getElementById('form-message');
+        const form = document.getElementById('auth-form');
+
+        let currentFormType = 'login'; // 'login' or 'register'
+
+        // --- Notification Logic ---
+        function showWelcomeNotification() {
+            const notification = document.getElementById('welcome-notification');
+            
+            // Show notification
+            notification.classList.remove('opacity-0', 'translate-y-full');
+            notification.classList.add('opacity-100', 'translate-y-0');
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('opacity-100', 'translate-y-0');
+                notification.classList.add('opacity-0', 'translate-y-full');
+            }, 5000);
+        }
+
+        window.onload = function() {
+            showWelcomeNotification();
+        };
+
+        // --- Modal/Form Logic ---
+
+        function openModal(type) {
+            switchForm(type);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex', 'opacity-0');
+            
+            // Force reflow and transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+            modal.classList.add('opacity-0');
+
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                formMessage.classList.add('hidden'); // Clear previous message
+                form.reset(); // Clear form inputs
+            }, 300); // Duration matches transition-opacity duration
+        }
+
+        function switchForm(type) {
+            currentFormType = type;
+            formMessage.classList.add('hidden'); // Hide message when switching
+
+            if (type === 'login') {
+                modalTitle.textContent = 'Login';
+                submitButton.textContent = 'Login';
+                switchPrompt.innerHTML = `Don't have an account? <button onclick="switchForm('register')" class="text-pink-600 hover:text-pink-800 font-medium transition-colors">Register</button>`;
+                confirmPasswordField.classList.add('hidden');
+                document.getElementById('confirm-password').removeAttribute('required');
+
+            } else { // register
+                modalTitle.textContent = 'Create Account';
+                submitButton.textContent = 'Register';
+                switchPrompt.innerHTML = `Already have an account? <button onclick="switchForm('login')" class="text-pink-600 hover:text-pink-800 font-medium transition-colors">Login</button>`;
+                confirmPasswordField.classList.remove('hidden');
+                document.getElementById('confirm-password').setAttribute('required', 'required');
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            formMessage.classList.remove('hidden', 'text-green-500', 'text-red-500');
+            
+            if (currentFormType === 'register' && password !== confirmPassword) {
+                formMessage.textContent = 'Error: Passwords do not match!';
+                formMessage.classList.add('text-red-500');
+                return;
+            }
+
+            // Simple simulation of success for both login and registration
+            formMessage.textContent = `${currentFormType === 'login' ? 'Login' : 'Registration'} successful! (No actual backend connection)`;
+            formMessage.classList.add('text-green-500');
+
+            // Simulate sending data and closing modal after a delay
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        }
+
+    </script>
+</body>
+</html>
